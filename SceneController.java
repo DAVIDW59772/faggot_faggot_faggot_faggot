@@ -6,6 +6,7 @@ import javafx.scene.layout.Pane;
 import javafx.event.EventHandler;
 import javafx.stage.WindowEvent;
 import java.util.List;
+import javafx.scene.control.*;
 
 public class SceneController
 {    
@@ -19,6 +20,7 @@ public class SceneController
     @FXML   private Button noButton;
     @FXML   private Button exitButton;
     @FXML   private ListView listView;
+    @FXML   private Label meme;
 
     public SceneController()          // The constructor method, called first when the scene is loaded.
     {
@@ -87,12 +89,16 @@ public class SceneController
         System.out.println("Exit was clicked!");        
         Application.terminate();        // Call the terminate method in the main Application class.
     }
+    
+    
 
     /* This method, set in SceneBuilder to occur when the listView is clicked, establishes which
      * item in the view is currently selected (if any) and outputs it to the console. */    
     @FXML   void listViewClicked()
     {
         Fruit selectedItem = (Fruit) listView.getSelectionModel().getSelectedItem();
+        
+        meme.setText(Integer.toString(selectedItem.id));
 
         if (selectedItem == null)
         {
